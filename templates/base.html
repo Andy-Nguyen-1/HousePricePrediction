@@ -1,0 +1,99 @@
+<html> 
+<head> 
+<title>{% block title %}{% endblock %}Home Price Predictor</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js" integrity="sha512-MefNfAGJ/pEy89xLOFs3V6pYPs6AmUhXJrRlydI/9wZuGrqxmrdQ80zKHUcyadAcpH67teDZcBeS6oMJLPtTqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+	<div class="login">
+
+	
+	{% block content %}
+
+	{% endblock%}
+	<form action="{{url_for('predict')}}" method="POST">
+		<label for="bedroom">Number of Bedrooms:</label>
+<select id="bedroom" name="bedrooms_grouped">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6+</option>
+</select>
+<br>
+<label for="bathrooms">Number of Bathrooms:</label>
+<select id="bathrooms" name="bathrooms">
+  <option value="1.0">1.0</option>
+  <option value="1.5">1.5</option>
+  <option value="2">2</option>
+  <option value="2.5">2.5</option>
+  <option value="3.0">3.0</option>
+  <option value="3.5">3.5</option>
+  <option value="4.0">4.0</option>
+  <option value="4.5">4.5</option>
+  <option value="5">5</option>
+</select>
+<br>
+<label for="condition">Condition</label>
+<select id="condition" name="condition">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<br>
+<label for="sqft_living">House SqFt</label>
+<select id="condition" name="sqft_living">
+  <option value="800">800</option>
+  <option value="900">900</option>
+  <option value="1000">1000</option>
+  <option value="1100">1100</option>
+  <option value="1200">1200</option>
+  <option value="1300">1300</option>
+  <option value="1400">1400</option>
+  <option value="1500">1500</option>
+  <option value="1600">1600</option>
+  <option value="1700">1700</option>
+  <option value="1800">1800</option>
+  <option value="1900">1900</option>
+  <option value="2000">2000</option>
+  <option value="2100">2100</option>
+  <option value="2000">2000</option>
+  <option value="2100">2100</option>
+  <option value="2200">2200</option>
+  <option value="2300">2300</option>
+  <option value="2400">2400</option>
+  <option value="2500">2500</option>
+  <option value="2600">2600</option>
+  <option value="2700">2700</option>
+  <option value="2800">2800</option>
+  <option value="2900">2900</option>
+  <option value="3000">2400</option>
+</select>
+<br>
+<br>
+<button type="submit">Predict</button>
+</form>
+<br>
+{{pred_text}}
+</div>
+<br>
+<br>
+<div class='info'>
+	<h1> How to use the Home Price Predictor </h1>
+	<ol>
+		<li> Enter the number of bedrooms in your home </li>
+		<li>Enter the number of bathrooms in your home</li>
+		<li>Enter the condition of your home ( 1 = Needs Work, 3 = Fair, 5 = Like New)</li>
+		<li>Enter the approximate SqFt of your home</li>
+		<li>Then press predict</li>
+	</ol>
+
+	<canvas id=" myChart" width="900" height="400"></canvas>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+title {
+	font-size: large;
+}
+body { 
+	background: rgb(34,193,195);
+background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+
+
+}
+
+.login {
+	font-size: x-large;
+	text-align: center;
+}
+
+.info{
+	font-size: large;
+}
